@@ -16,24 +16,6 @@ module.exports = {
     "react-native/no-color-literals": 2,
     "react-native/no-raw-text": 2,
     "react-native/no-single-element-style-arrays": 2,
-    "simple-import-sort/imports": [
-      "error",
-      {
-        groups: [
-          // Packages `react` related packages come first.
-          ["^react", "^@?\\w"],
-          // Internal packages.
-          ["^(@|components)(/.*|$)"],
-          // Side effect imports.
-          ["^\\u0000"],
-          // Parent imports. Put `..` last.
-          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-          // Other relative imports. Put same-folder imports and `.` last.
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-          // Style imports.
-          ["^.+\\.?(css)$"],
-        ],
-      },
-    ],
+    "max-len": ["error", { code: 90 }],
   },
 };

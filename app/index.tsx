@@ -11,7 +11,7 @@ const StartPage = () => {
           }
         >
           <Text className={"flex text-blue-support"}>Start page</Text>
-          <ButtonCustom>вывы</ButtonCustom>
+          <ButtonCustom text={"Авторизироваться"} />
         </View>
       </ScrollView>
     </SafeAreaView>
