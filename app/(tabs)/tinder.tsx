@@ -1,9 +1,10 @@
-import { Image, Text, View } from "react-native";
-import { images } from "../../constants/index";
+import { Text, View } from "react-native";
 
 const TinderPage = () => {
   return (
-    <View className={""}>
+    <View
+      className={"flex justify-center items-center h-full w-fulls bg-primary"}
+    >
       <Text>TinderPage</Text>
     </View>
   );

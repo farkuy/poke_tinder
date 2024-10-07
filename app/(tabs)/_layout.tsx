@@ -1,9 +1,28 @@
 import { Tabs } from "expo-router";
 import React from "react";
-
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { Image, ImageSourcePropType } from "react-native";
+import icons from "../../constants/icons";
+
+interface ITab {
+  title: string;
+  name: string;
+  icon: ImageSourcePropType;
+}
+
+const tabConfig: ITab[] = [
+  {
+    name: "home",
+    title: "Home",
+    icon: icons.home,
+  },
+  {
+    name: "tinder",
+    title: "Tinder",
+    icon: icons.search,
+  },
+];
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,30 +34,15 @@ export default function TabLayout() {
         headerShown: false,
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: "Explore",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
-            />
-          ),
-        }}
-      />
+      {tabConfig.map((tab) => (
+        <Tabs.Screen
+          name={tab.name}
+          options={{
+            title: tab.title,
+            tabBarIcon: ({ color, focused }) => <Image source={tab.icon} />,
+          }}
+        />
+      ))}
     </Tabs>
   );
 }
