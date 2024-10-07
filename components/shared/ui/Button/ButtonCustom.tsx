@@ -13,13 +13,15 @@ const ButtonCustom: FC<ButtonCustomProps> = (props) => {
   const { text, textStyle, buttonStyle, loading, ...anyProps } = props;
   return (
     <TouchableOpacity
-      className={`flex justify-center items-center h-[50px] w-full py-8 px-4 bg-blue-support rounded-xl ${loading ? "opacity-50 disabled" : ""} ${buttonStyle}`}
+      className={`flex justify-center items-center min-h-[62px] w-full px-4 bg-blue-support rounded-xl ${loading ? "opacity-50 disabled" : ""} ${buttonStyle}`}
+      activeOpacity={0.7}
+      disabled={loading}
       {...anyProps}
     >
       {loading ? (
         <ActivityIndicator size={"large"} />
       ) : (
-        <Text className={`text-primary ${textStyle}`}>{text}</Text>
+        <Text className={`text-white text-xl ${textStyle}`}>{text}</Text>
       )}
     </TouchableOpacity>
   );

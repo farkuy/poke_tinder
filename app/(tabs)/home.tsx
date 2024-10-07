@@ -1,11 +1,9 @@
-import { StyleSheet, View, Text, Image } from "react-native";
-import images from "../../constants/image";
+import { StyleSheet, Text, View } from "react-native";
 
 const HomePage = () => {
   return (
     <View style={styles.container}>
       <Text>HomePage</Text>
-      <Image source={images.bulbasaur} resizeMode="contain" />
     </View>
   );
 };
