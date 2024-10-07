@@ -1,9 +1,10 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Image, ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from "react-native";
 import icons from "../../constants/icons";
+import TabIcon from "@/components/shared/ui/TabIcon/TabIcon";
+import { Colors } from "@/constants/Colors";
 
 interface ITab {
   title: string;
@@ -30,16 +31,29 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarStyle: {
+          backgroundColor: "#161622",
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84,
+        },
       }}
     >
       {tabConfig.map((tab) => (
         <Tabs.Screen
           name={tab.name}
           options={{
-            title: tab.title,
-            tabBarIcon: ({ color, focused }) => <Image source={tab.icon} />,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={tab.icon}
+                name={tab.title}
+                color={color}
+                focused={focused}
+              />
+            ),
           }}
         />
       ))}
