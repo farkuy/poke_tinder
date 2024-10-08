@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { Link } from "expo-router";
 import { useState } from "react";
-import Input from "@/components/shared/ui/Input/Input";
+import InputWithDismissKeyboard from "@/components/shared/ui/Input/Input";
 
 const SignInPage = () => {
   const [mail, changeMail] = useState("");
@@ -11,7 +11,8 @@ const SignInPage = () => {
       className={"flex justify-center items-center h-full w-full bg-primary"}
     >
       <Text>sign in</Text>
-      <Input
+      <InputWithDismissKeyboard
+        inputStyle={"w-[90%]"}
         placeholder={"Enter your email"}
         keyboardType={"email-address"}
         textAlign={"center"}
