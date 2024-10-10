@@ -3,7 +3,7 @@ import { Link } from "expo-router";
 import { useState } from "react";
 import Input from "@/components/shared/ui/Input/Input";
 import DismissKeyboard from "@/components/shared/ui/DismissKeyboard";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   LoginInput,
   loginValidationSchema,
@@ -16,7 +16,7 @@ const SignInPage = () => {
   const [password, setPassword] = useState("");
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginInput>({
@@ -35,23 +35,35 @@ const SignInPage = () => {
         <Text className={"text-amber-300 text-[30px] left-24 mb-[10px]"}>
           Sign in
         </Text>
-        <Input
-          inputStyle={"w-[90%] mb-[10px]"}
-          placeholder={"Enter your email"}
-          keyboardType={"email-address"}
-          textAlign={"center"}
-          onChangeText={changeMail}
-          value={mail}
-          errorMessage={errors.email?.message}
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              inputStyle={"w-[90%] mb-[10px]"}
+              placeholder={"Enter your email"}
+              keyboardType={"email-address"}
+              textAlign={"center"}
+              onChangeText={onChange}
+              value={value}
+              errorMessage={errors.email?.message}
+            />
+          )}
+          name="email"
         />
-        <Input
-          inputStyle={"w-[90%] mb-[10px]"}
-          placeholder={"Enter your password"}
-          keyboardType={"visible-password"}
-          textAlign={"center"}
-          onChangeText={setPassword}
-          value={password}
-          errorMessage={errors.password?.message}
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              inputStyle={"w-[90%] mb-[10px]"}
+              placeholder={"Enter your password"}
+              keyboardType={"visible-password"}
+              textAlign={"center"}
+              onChangeText={onChange}
+              value={value}
+              errorMessage={errors.password?.message}
+            />
+          )}
+          name="password"
         />
         <ButtonCustom
           onPress={handleSubmit(onSubmit)}
