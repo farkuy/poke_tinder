@@ -1,6 +1,5 @@
 import { Text, View } from "react-native";
 import { Link } from "expo-router";
-import { useState } from "react";
 import Input from "@/components/shared/ui/Input/Input";
 import DismissKeyboard from "@/components/shared/ui/DismissKeyboard";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -10,11 +9,9 @@ import {
 } from "@/components/shared/type/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
+import { loginInputs } from "@/components/shared/config/loginConfig";
 
 const SignInPage = () => {
-  const [mail, changeMail] = useState("");
-  const [password, setPassword] = useState("");
-
   const {
     control,
     handleSubmit,
@@ -35,36 +32,23 @@ const SignInPage = () => {
         <Text className={"text-amber-300 text-[30px] left-24 mb-[10px]"}>
           Sign in
         </Text>
-        <Controller
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              inputStyle={"w-[90%] mb-[10px]"}
-              placeholder={"Enter your email"}
-              keyboardType={"email-address"}
-              textAlign={"center"}
-              onChangeText={onChange}
-              value={value}
-              errorMessage={errors.email?.message}
-            />
-          )}
-          name="email"
-        />
-        <Controller
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              inputStyle={"w-[90%] mb-[10px]"}
-              placeholder={"Enter your password"}
-              keyboardType={"visible-password"}
-              textAlign={"center"}
-              onChangeText={onChange}
-              value={value}
-              errorMessage={errors.password?.message}
-            />
-          )}
-          name="password"
-        />
+        {loginInputs.map((item) => (
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                inputStyle={"w-[90%] mb-[10px]"}
+                placeholder={item.placeholder}
+                keyboardType={item.keyboardType}
+                textAlign={"center"}
+                onChangeText={onChange}
+                value={value}
+                errorMessage={errors[item.name]?.message}
+              />
+            )}
+            name={item.name}
+          />
+        ))}
         <ButtonCustom
           onPress={handleSubmit(onSubmit)}
           buttonStyle={"w-[90%] h-[30px]"}
