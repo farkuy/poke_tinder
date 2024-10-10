@@ -1,29 +1,9 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { ImageSourcePropType } from "react-native";
-import icons from "../../constants/icons";
 import TabIcon from "@/components/shared/ui/TabIcon/TabIcon";
 import { Colors } from "@/constants/Colors";
-
-interface ITab {
-  title: string;
-  name: string;
-  icon: ImageSourcePropType;
-}
-
-const tabConfig: ITab[] = [
-  {
-    name: "home",
-    title: "Home",
-    icon: icons.home,
-  },
-  {
-    name: "tinder",
-    title: "Tinder",
-    icon: icons.search,
-  },
-];
+import { tabConfig } from "@/components/shared/config/tabConfig";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
