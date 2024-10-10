@@ -27,7 +27,11 @@ const StartPage = () => {
               resizeMode="contain"
             />
           </View>
-          <ButtonCustom text={"Login"} onPress={() => router.push("/signIn")} />
+          <ButtonCustom
+            buttonStyle={"min-h-[64px] w-[90%]"}
+            text={"Login"}
+            onPress={() => router.push("/signIn")}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
