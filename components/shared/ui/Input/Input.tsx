@@ -1,10 +1,5 @@
 import React, { FC } from "react";
-import {
-  Keyboard,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { TextInput } from "react-native";
 import { TextInputProps } from "react-native/Libraries/Components/TextInput/TextInput";
 
 interface InputProps extends TextInputProps {
@@ -23,15 +18,4 @@ const Input: FC<InputProps> = (props) => {
     />
   );
 };
-
-const InputWithDismissKeyboard: FC<InputProps> = (props) => {
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className={"flex justify-center items-center w-full h-full"}>
-        <Input {...props} />
-      </View>
-    </TouchableWithoutFeedback>
-  );
-};
-
-export default InputWithDismissKeyboard;
+export default Input;
