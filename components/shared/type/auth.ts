@@ -10,3 +10,21 @@ export const loginValidationSchema = z.object({
 });
 
 export type LoginInput = z.infer<typeof loginValidationSchema>;
+
+export const registrationValidationSchema = z
+  .object({
+    email: z
+      .string({ message: "Enter your mail" })
+      .email({ message: "Enter your mail" }),
+    password: z
+      .string({ message: "Enter your password" })
+      .min(3, { message: "Short password" }),
+    passwordConfirm: z
+      .string({ message: "Enter your password" })
+      .min(3, { message: "Short password" }),
+  })
+  .refine((data) => data.password === data.passwordConfirm, {
+    message: "passwords are not recommended",
+  });
+
+export type RegistrationInput = z.infer<typeof registrationValidationSchema>;

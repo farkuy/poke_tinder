@@ -35,6 +35,7 @@ export default function TabLayout() {
               />
             ),
           }}
+          key={tab.name}
         />
       ))}
     </Tabs>

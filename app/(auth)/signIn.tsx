@@ -9,7 +9,7 @@ import {
 } from "@/components/shared/type/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
-import { loginInputs } from "@/components/shared/config/loginConfig";
+import { loginInputs } from "@/components/shared/config/authConfig";
 
 const SignInPage = () => {
   const {
