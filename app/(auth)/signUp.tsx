@@ -56,7 +56,7 @@ const SignUpPage = () => {
           text={"Login"}
         />
         <Text className={"text-white"}>
-          If your dont have account:{" "}
+          If you have account:{" "}
           <Link className={"text-[20px] text-blue-support"} href={"/signIn"}>
             Sing in
           </Link>

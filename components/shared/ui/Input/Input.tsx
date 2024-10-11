@@ -18,7 +18,9 @@ const Input: FC<InputProps> = (props) => {
         className={`w-full bg-gray-200 min-h-[45px] border-4 border-blue-support rounded-xl opacity-80 ${inputStyle}`}
         {...anyProps}
       />
-      {errorMessage && <Text className={"text-red-500"}>{errorMessage}</Text>}
+      {errorMessage && (
+        <Text className={"text-red-500 mb-2"}>{errorMessage}</Text>
+      )}
     </>
   );
 };

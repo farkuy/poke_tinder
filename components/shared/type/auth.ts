@@ -24,7 +24,8 @@ export const registrationValidationSchema = z
       .min(3, { message: "Short password" }),
   })
   .refine((data) => data.password === data.passwordConfirm, {
-    message: "passwords are not recommended",
+    message: "Passwords do not match",
+    path: ["passwordConfirm"],
   });
 
 export type RegistrationInput = z.infer<typeof registrationValidationSchema>;
