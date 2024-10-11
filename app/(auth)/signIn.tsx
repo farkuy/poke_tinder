@@ -47,6 +47,7 @@ const SignInPage = () => {
               />
             )}
             name={item.name}
+            key={item.name}
           />
         ))}
         <ButtonCustom
