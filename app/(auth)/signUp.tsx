@@ -10,6 +10,7 @@ import { registerInputs } from "@/components/shared/config/authConfig";
 import Input from "@/components/shared/ui/Input/Input";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
 import { Link } from "expo-router";
+import { registerUser } from "@/lib/appwrite";
 
 const SignUpPage = () => {
   const {
@@ -20,8 +21,8 @@ const SignUpPage = () => {
     resolver: zodResolver(registrationValidationSchema),
   });
 
-  const onSubmit: SubmitHandler<RegistrationInput> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
+    await registerUser(data.email, data.password);
   };
 
   return (

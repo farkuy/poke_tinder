@@ -10,8 +10,11 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
 import { loginInputs } from "@/components/shared/config/authConfig";
+import { loginUser } from "@/lib/appwrite";
+import { useNavigation } from "@react-navigation/core";
 
 const SignInPage = () => {
+  const { navigate } = useNavigation();
   const {
     control,
     handleSubmit,
@@ -20,8 +23,12 @@ const SignInPage = () => {
     resolver: zodResolver(loginValidationSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginInput> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginInput> = async (data) => {
+    try {
+      navigate("tinder");
+    } catch (e) {
+      return e;
+    }
   };
 
   return (
