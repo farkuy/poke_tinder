@@ -1,4 +1,6 @@
 import { Account, Client, ID } from "react-native-appwrite";
+import { router } from "expo-router";
+import { notifyMessage } from "@/components/shared/utils/notify";
 
 export const appwriteConfig = {
   endpoint: "https://cloud.appwrite.io/v1",
@@ -27,8 +29,8 @@ export const registerUser = async (email: string, password: string) => {
     console.log(res);
 
     return res;
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -36,9 +38,21 @@ export const loginUser = async (email: string, password: string) => {
   try {
     const res = await account.createEmailPasswordSession(email, password);
     console.log(res);
-
+    const jwt = await account.createJWT();
+    console.log("jwt", jwt);
+    router.navigate("../(tabs)/home");
     return res;
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    notifyMessage("Incorrect email and password");
+    console.error(error);
+  }
+};
+
+export const logout = async () => {
+  try {
+    const res = await account.deleteSessions();
+  } catch (error) {
+    notifyMessage("Logout problems");
+    console.log(error);
   }
 };
