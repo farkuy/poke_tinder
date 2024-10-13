@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 import Input from "@/components/shared/ui/Input/Input";
 import DismissKeyboard from "@/components/shared/ui/DismissKeyboard";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -11,8 +11,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
 import { loginInputs } from "@/components/shared/config/authConfig";
 import { loginUser } from "@/lib/appwrite";
+import { userSlice } from "@/store/reducers/UserSlice";
+import { useAppDispatch } from "@/components/shared/hooks/redux";
 
 const SignInPage = () => {
+  const { setUserData } = userSlice.actions;
+  const dispatch = useAppDispatch();
+
   const {
     control,
     handleSubmit,
