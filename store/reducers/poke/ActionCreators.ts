@@ -1,10 +1,10 @@
 import { AppDispatch } from "@/store/store";
 import axios from "axios";
-import { IPoce } from "@/components/shared/type/poce";
+import { IPoke } from "@/components/shared/type/poke";
 
-export const fetchPoce = () => async (dispatch: AppDispatch) => {
+export const fetchPoke = () => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.get<IPoce[]>(
+    const response = await axios.get<IPoke[]>(
       "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
     );
     return response.data;

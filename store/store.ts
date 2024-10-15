@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducers/user/UserSlice";
-import poceReducer from "./reducers/poce/PoceSlice";
+import poceReducer from "./reducers/poke/PoceSlice";
 
 const rootReducer = combineReducers({
   userReducer,
