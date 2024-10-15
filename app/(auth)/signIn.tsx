@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonCustom from "@/components/shared/ui/Button/ButtonCustom";
 import { loginInputs } from "@/components/shared/config/authConfig";
 import { loginUser } from "@/lib/appwrite";
-import { userSlice } from "@/store/reducers/UserSlice";
+import { userSlice } from "@/store/reducers/user/UserSlice";
 import { useAppDispatch } from "@/components/shared/hooks/redux";
 
 const SignInPage = () => {
@@ -29,7 +29,16 @@ const SignInPage = () => {
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
     try {
       const res = await loginUser(data.email, data.password);
+      if (res)
+        dispatch(
+          setUserData({
+            id: res.$id,
+            email: res.providerUid,
+          }),
+        );
       console.log(res);
+
+      //logout();
     } catch (e) {
       return e;
     }

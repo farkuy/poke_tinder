@@ -1,12 +1,13 @@
 import { IUser } from "@/components/shared/type/user";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface UserSlice {
+interface UserState {
   user: IUser;
   isLoading: boolean;
   error: string;
 }
-const initialState: UserSlice = {
+
+const initialState: UserState = {
   user: {
     id: "",
     email: "",
