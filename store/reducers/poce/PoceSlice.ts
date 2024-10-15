@@ -17,8 +17,17 @@ export const poceSlice = createSlice({
   name: "poce",
   initialState,
   reducers: {
-    setPoce(state, action: PayloadAction<IPoce[]>) {
+    poceFetching(state) {
+      state.isLoading = true;
+    },
+    poceFetchingSuccess(state, action: PayloadAction<IPoce[]>) {
+      state.isLoading = false;
+      state.error = "";
       state.poce = action.payload;
+    },
+    poceFetchingError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

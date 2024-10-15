@@ -1,5 +1,5 @@
 export interface IPoce {
-  id: number;
+  id?: number;
   name: string;
   front_default: string;
 }
